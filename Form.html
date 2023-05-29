@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="Form.html">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="main">
+  <form action="" method="POST"  class="form" id="form1">
+    <h3 class="heading"> Thần Số Học </h3>
+    <p class="desc">Tra ra lá số tử vi của bạn </p>
+    <div class="spacer"></div>
+
+    <div class="form_group">
+      <label for="fullname" class="form_label">Họ và tên</label>
+      <input id="fullname" name="fullname" type="text" placeholder="VD: Ngô Vũ Cao Long" class="form_control">
+      <span class="form_message"></span>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="form_group">
+      <label for="birthday" class="form_label">Ngày Sinh</label>
+      <input id="birthday" name="birthday" type="text" placeholder="VD:17/01/2003" class="form_control" >
+      <span class="form_message"></span>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="form_group">
+      <label for="PassWord" class="form_label">PassWord</label>
+      <input id="PassWord" name="PassWord" type="text" placeholder="VD: 123456" class="form_control" >
+      <span class="form_message"></span>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="form_group">
+      <label for="PassWord_ConFirmation" class="form_label">PassWord Confirmation</label>
+      <input id="PassWord_ConFirmation" name="PassWord_Confirmation" type="text" placeholder="" class="form_control" >
+      <span class="form_message"></span>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="form_group">
+      <label for="Email" class="form_label">Email</label>
+      <input id="Email" name="gender" type="text" placeholder="VD: abc@gmail.com" class="form_control" >
+      <span class="form_message"></span>
+    </div>
+    <div class="spacer"></div>
+
+    <button class="submit_button">Submit</button>
+  </form>
+</div>
+</body>
+<script src="CheckForm.js"></script>
+<script>
+  Vadilator({
+    form: '#form1',
+    rules: [
+            // Vadilator.isRequired('#fullname'),
+            Vadilator.isEmail('#Email'),
+            Vadilator.isRequired('#PassWord'),
+            Vadilator.isEnought('#PassWord'),
+            Vadilator.checkCorrect('#PassWord_ConFirmation',function (){
+              return document.querySelector('#form1 #PassWord').value
+            }),
+            Vadilator.isRequired('#PassWord_ConFirmation')
+  ],
+    onsubmit: (data)=>{
+      console.log(data)
+    }
+  })
+</script>
+</html>
